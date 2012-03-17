@@ -6,7 +6,8 @@ editors, such as Gedit, in order to highlight the syntax of SL language.
 
 #### Install ####
 
-In order to install sl-highlight you need to do the following in your command line
+In order to install sl-highlight you need to git clone or download the project
+then go to the cloned/downloaded project folder and do the following in your command line
     
     $ bash install.sh
 
