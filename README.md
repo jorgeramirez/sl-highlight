@@ -16,4 +16,4 @@ Then open your editor (gedit, etc)
 
 and you should see something like this
 
-<img src="assets/images/fibo.png" alt="fibonacci">
+<img src="https://github.com/jorgeramirez/sl-highlight/raw/master/assets/images/fibo.png" alt="fibonacci">
