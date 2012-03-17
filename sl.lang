@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Author: Jorge Ramírez <jorgeramirez1990@gmail.com>
+
+ This library is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-->
+
+<language id="sl" _name="SL" version="2.0" _section="Sources">
+    <metadata>
+        <property name="mimetypes">text/x-sl;application/x-sl</property>
+        <property name="globs">*.sl</property>
+        <property name="line-comment-start">//</property>
+    </metadata>
+
+    <styles>
+        <style id="comment" _name="Comment" map-to="def:comment"/>
+        <style id="string" _name="String" map-to="def:string"/>
+        <style id="keyword" _name="Keyword" map-to="def:keyword"/>
+        <style id="decimal" _name="Decimal" map-to="def:decimal"/>
+        <style id="type" _name="Data Type" map-to="def:type"/>
+        <style id="escaped-char" _name="Escaped Character" map-to="def:special-char"/>
+        <style id="builtin-constant" _name="Builtin Constant" map-to="def:special-constant"/>
+        <style id="builtin-function" _name="Builtin Function" map-to="def:builtin"/>
+    </styles>
+    
+    <definitions>
+    
+        <context id="escaped-char" style-ref="escaped-char">
+            <match>\\.</match>
+        </context>
+    
+        <context id="string-double-quote" style-ref="string" end-at-line-end="true" class="string" class-disabled="no-spell-check">
+            <start>"</start>
+            <end>"</end>
+            <include>
+                <context ref="escaped-char"/>
+            </include>
+        </context>
+
+        <context id="string-single-quote" style-ref="string" end-at-line-end="true" class="string" class-disabled="no-spell-check">
+            <start>'</start>
+            <end>'</end>
+            <include>
+                <context ref="escaped-char"/>
+            </include>
+        </context>
+    
+        <context id="line-comment" style-ref="comment" end-at-line-end="true" class="comment" class-disabled="no-spell-check">
+            <start>\/\/</start>
+            <end>$</end>
+            <include>
+                <context ref="escaped-char"/>
+                <context ref="def:in-comment"/>
+            </include>
+        </context>
+        
+        <context id="multiline-comment" style-ref="comment" class="comment" class-disabled="no-spell-check">
+            <start>\/\*</start>
+            <end>\*\/</end>
+            <include>
+                <context ref="escaped-char"/>
+                <context ref="def:in-comment"/>
+            </include>
+        </context>
+        
+        <context id="keyword" style-ref="keyword">
+            <keyword>and</keyword>
+            <keyword>constantes</keyword>
+            <keyword>hasta</keyword>
+            <keyword>matriz</keyword>
+            <keyword>paso</keyword>
+            <keyword>registro</keyword>
+            <keyword>sino</keyword>
+            <keyword>vector</keyword>
+            <keyword>archivo</keyword>
+            <keyword>desde</keyword>
+            <keyword>inicio</keyword>
+            <keyword>mientras</keyword>
+            <keyword>subrutina</keyword>
+            <keyword>repetir</keyword>
+            <keyword>tipos</keyword>
+            <keyword>caso</keyword>
+            <keyword>eval</keyword>
+            <keyword>lib</keyword>
+            <keyword>not</keyword>
+            <keyword>programa</keyword>
+            <keyword>retorna</keyword>
+            <keyword>var</keyword>
+            <keyword>const</keyword>
+            <keyword>fin</keyword>
+            <keyword>libext</keyword>
+            <keyword>or</keyword>
+            <keyword>ref</keyword>
+            <keyword>si</keyword>
+            <keyword>variables</keyword>
+        </context>
+
+        <context id="builtin-types" style-ref="type">
+            <keyword>cadena</keyword>
+            <keyword>logico</keyword>
+            <keyword>numerico</keyword>
+        </context>
+        
+        <context id="builtin-constants" style-ref="builtin-constant">
+            <keyword>TRUE</keyword>
+            <keyword>FALSE</keyword>
+            <keyword>SI</keyword>
+            <keyword>NO</keyword>
+        </context>
+        
+        <context id="builtin-procedures" style-ref="builtin-function">
+            <keyword>dim</keyword>
+            <keyword>imprimir</keyword>
+            <keyword>cls</keyword>
+            <keyword>leer</keyword>
+            <keyword>set_ifs</keyword>
+        </context>
+
+        <context id="builtin-functions" style-ref="builtin-function">
+            <keyword>abs</keyword>
+            <keyword>arctan</keyword>
+            <keyword>ascii</keyword>
+            <keyword>cos</keyword>
+            <keyword>dec</keyword>
+            <keyword>eof</keyword>
+            <keyword>exp</keyword>
+            <keyword>get_ifs</keyword>
+            <keyword>inc</keyword>
+            <keyword>int</keyword>
+            <keyword>log</keyword>
+            <keyword>lower</keyword>
+            <keyword>mem</keyword>
+            <keyword>ord</keyword>
+            <keyword>paramval</keyword>
+            <keyword>pcount</keyword>
+            <keyword>pos</keyword>
+            <keyword>random</keyword>
+            <keyword>sec</keyword>
+            <keyword>set_stdin</keyword>
+            <keyword>set_stdout</keyword>
+            <keyword>sin</keyword>
+            <keyword>sqrt</keyword>
+            <keyword>str</keyword>
+            <keyword>strdup</keyword>
+            <keyword>strlen</keyword>
+            <keyword>substr</keyword>
+            <keyword>tan</keyword>
+            <keyword>upper</keyword>
+            <keyword>val</keyword>
+        </context>
+        
+        <context id="sl" class="no-spell-check">
+            <include>
+                <context ref="escaped-char"/>
+                <context ref="string-double-quote"/>
+                <context ref="string-single-quote"/>
+                <context ref="line-comment"/>
+                <context ref="multiline-comment"/>
+                <context ref="def:decimal"/>
+                <context ref="def:float"/>
+                <context ref="keyword"/>
+                <context ref="builtin-types"/>
+                <context ref="builtin-constants"/>
+                <context ref="builtin-procedures"/>
+                <context ref="builtin-functions"/>
+            </include>
+        </context>
+    </definitions>
+</language>
