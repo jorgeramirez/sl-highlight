@@ -13,12 +13,10 @@ function copy_lang {
 
 for ((i=0; i < ${#gtksv[@]}; i++)); do
     dir=${gtksv[${i}]}
-    if [ -d $dir ]; then
-        copy_lang $dir
-    else
+    if [ ! -d $dir ]; then
         mkdir -p $dir
-        copy_lang $dir
     fi
+    copy_lang $dir
 done
 
 # copy mime type spec and update mime types database
