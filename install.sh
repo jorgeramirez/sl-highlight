@@ -30,11 +30,10 @@ function setup_mime {
     cd ~/.local/share && update-mime-database mime
 }
 
-if [ -d $mime_dir ]; then
-    setup_mime
-else
+if [ ! -d $mime_dir ]; then
     mkdir -p $mime_dir
-    setup_mime
 fi
+
+setup_mime
 
 echo "Install [DONE]"
